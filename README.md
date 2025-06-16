@@ -30,7 +30,8 @@ VITE_API_BASE_URL=https://684dd33965ed087139173400.mockapi.io/api
 
 Replace with your own MockAPI URL if needed
 Create the resourse as follows - 
-![App Screenshot](/screenshot.png)
+
+![App Screenshot](static/screenshot.png)
 
 Then run:
 ```bash
