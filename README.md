@@ -1,38 +1,38 @@
-# sv
+# Notes
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A simple and minimal note-taking web app with color-coded notes, search functionality, and responsive UI.
 
-## Creating a project
+## Tech Stack
 
-If you're seeing this, you've probably already done this step. Congrats!
+- Frontend: Svelte + Tailwind CSS
+- Mock API: MockAPI.io
+
+## Features
+
+- Create, edit, delete notes
+- Assign color tags to notes
+- Search notes by title/content
+- Responsive design for mobile and desktop
+
+## How to run 
 
 ```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+git clone https://github.com/srishtea-22/notes.git
+cd notes
+npm install
+touch .env
 ```
 
-## Developing
+Add this to your .env:
+```bash
+VITE_API_BASE_URL=https://684dd33965ed087139173400.mockapi.io/api
+```
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Replace with your own MockAPI URL if needed
+Create the resourse as follows - 
+![App Screenshot](/screenshot.png)
 
+Then run:
 ```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
