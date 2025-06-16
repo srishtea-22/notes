@@ -11,7 +11,7 @@ export const loadNotes = async () => {
     error.set(null);
     try {
         const fetchedNotes: Note[] = await fetchNotes();
-        notes.set(fetchedNotes);
+        notes.set(fetchedNotes.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()));
     }
     catch (err: unknown) {
        if (err instanceof Error){
@@ -31,7 +31,7 @@ export const addNote = async (noteData: NewNote) => {
     error.set(null);
     try {
         const newNote: Note = await createNote(noteData);
-        notes.update((currentNotes: Note[]) => [...currentNotes, newNote]);
+        notes.update((currentNotes: Note[]) => [newNote, ...currentNotes]);
     }
     catch (err: unknown) {
        if (err instanceof Error){
