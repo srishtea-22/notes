@@ -129,7 +129,6 @@
 
       {#if showConfirmationModal}
       <ConfirmationModal
-        isOpen={showConfirmationModal}
         message="Are you sure you want to delete"
         item="{noteToDeleteTitle}"
         on:confirm="{handleConfirmDelete}"

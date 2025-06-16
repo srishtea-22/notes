@@ -1,43 +1,44 @@
 <script lang="ts">
     import { createEventDispatcher, onMount, onDestroy } from 'svelte'; 
+    import { browser } from '$app/environment';
 
     export let isOpen: boolean;
     export let title: string = 'Modal Title';
 
     const dispatch = createEventDispatcher<{ close: void }>();
 
-    function closeOnEsc(event: KeyboardEvent) {
-        if (event.key === 'Escape') {
+    function handleKeyDown(event: KeyboardEvent) {
+        if (isOpen && event.key === 'Escape') {
             dispatch('close');
         }
     }
 
     onMount(() => {
-        if (isOpen) {
-            window.addEventListener('keydown', closeOnEsc);
+        if (browser) {
+            window.addEventListener('keydown', handleKeyDown);
+        }
+        return () => {
+            if (browser) {
+                window.removeEventListener('keydown', handleKeyDown);
+            }
         }
     });
 
-    onDestroy(() => {
-        window.removeEventListener('keydown', closeOnEsc);
-    });
-
-    $: if (isOpen) {
-        window.addEventListener('keydown', closeOnEsc);
-    } else {
-        window.removeEventListener('keydown', closeOnEsc);
-    }
 </script>
 
 {#if isOpen}
-<!-- svelte-ignore a11y-no-static-element-interactions -->
     <div
         class="fixed inset-0 backdrop-blur flex items-center justify-center z-50 p-4"
         on:click|self={() => dispatch('close')}
+        role="button"
+        tabindex="0"
+        aria-label="Close modal background"
+        on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && dispatch('close')}
     >
         <div
             class="bg-white rounded-lg shadow-xl p-6 max-w-lg w-full transform transition-all scale-100 opacity-100 relative"
             on:click|stopPropagation
+            role="presentation"
         >
             <button
                 on:click={() => dispatch('close')}

@@ -27,7 +27,7 @@
         <h3 class="text-xl font-bold text-gray-900 mb-2 font-poppins">{note.title}</h3>
         <p class="text-gray-600 mb-4 break-words font-poppins">{note.content}</p>
     </div>
-    <div class="flex justify-between items-center text-sm text-gray-500 mt-auto pt-4 border-t border-gray-200">
+    <div class="flex justify-between items-center text-sm text-gray-500 mt-auto pt-4 border-t border-gray-200 font-poppins">
         <span>Created: {formatDate(note.createdAt)}</span>
         <div class="flex space-x-2">
             <button

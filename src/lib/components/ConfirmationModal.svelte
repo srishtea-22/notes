@@ -1,6 +1,6 @@
 <script lang="ts">
     import {createEventDispatcher} from 'svelte';
-    export let isOpen: boolean; 
+    import { onMount, onDestroy } from 'svelte';
     export let message: string = "Are you sure you want to proceed?";
     export let item: string = '';
     const dispatch = createEventDispatcher<{ confirm: void; cancel: void}>();
@@ -11,6 +11,18 @@
     function cancel() {
         dispatch('cancel');
     }
+    function handleKeydown(e: KeyboardEvent) {
+        if (e.key === 'Escape') {
+            cancel();
+        }
+    }
+    onMount(() => {
+        window.addEventListener('keydown', handleKeydown);
+    });
+
+    onDestroy(() => {
+        window.removeEventListener('keydown', handleKeydown);
+    });
 </script>
 
 <div class="fixed inset-0 backdrop-blur-sm flex items-center justify-center z-50 p-4 font-poppins">
