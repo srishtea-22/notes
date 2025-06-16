@@ -84,7 +84,7 @@
 <div class="flex h-screen">
   <div class="flex-1 flex flex-col overflow-y-auto">
     <div class="flex items-center p-4 backdrop-blur sticky top-0 bg-white/30 z-20"> <div class="flex flex-col md:flex-row justify-between w-full gap-4 md:gap-10 items-center">
-        <div class="flex flex-col md:flex-row items-center gap-2 md:gap-6 mt-4 ml-4 md:ml-8 w-full">
+        <div class="flex flex-col md:flex-row items-center gap-2 md:gap-10 mt-4 ml-4 md:ml-16 w-full">
           <div class="flex items-center gap-2">
             <h1 class="text-3xl md:text-4xl font-unbounded font-extrabold text-black">Notes</h1>
 
@@ -111,7 +111,7 @@
           </div>
         </div>
 
-        <div class="hidden md:flex items-center gap-3 mt-4 mr-4 md:mr-8">
+        <div class="hidden md:flex items-center gap-3 mt-4 mr-4 md:mr-16">
           <div class="relative group">
             <button on:click={openAddModal} aria-label="Add new note">
               <div class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-blue-100 transition-colors duration-200 cursor-pointer">
