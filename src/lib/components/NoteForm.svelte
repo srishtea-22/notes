@@ -13,7 +13,7 @@
 
     async function handleSubmit() {
         if (!title.trim() || !content.trim()) {
-            alert("Title and contenct  can't be empty");
+            alert("Title and content can't be empty");
             return;
         }
 
@@ -37,9 +37,9 @@
     }
 </script>
 
-<form on:submit|preventDefault={handleSubmit} class="bg-white p-6 rounded-lg shadow-md mb-8">
+<form on:submit|preventDefault={handleSubmit} class="p-6 rounded-lg font-poppins">
     <div class="mb-4">
-        <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Title:</label>
+        <label for="title" class="block text-gray-700 font-bold mb-2">Title:</label>
         <input
             type="text"
             id="title"
@@ -50,7 +50,7 @@
         />
     </div>
     <div class="mb-6">
-        <label for="content" class="block text-gray-700 text-sm font-bold mb-2">Content:</label>
+        <label for="content" class="block text-gray-700 font-bold mb-2">Content:</label>
         <textarea
             id="content"
             bind:value={content}
@@ -63,13 +63,13 @@
         <button
             type="button"
             on:click={handleCancel}
-            class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
+            class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-150 ease-in-out cursor-pointer"
         >
             Cancel
         </button>
         <button
             type="submit"
-            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-150 ease-in-out"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-150 ease-in-out cursor-pointer"
         >
             {isEditing ? 'Save Changes' : 'Add Note'}
         </button>

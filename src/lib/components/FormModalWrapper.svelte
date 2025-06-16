@@ -47,7 +47,7 @@
             >
                 &times;
             </button>
-            <h3 class="text-2xl font-semibold text-gray-900 mb-4 border-b pb-2">{title}</h3>
+            <h3 class="text-2xl font-poppins font-semibold text-gray-900 mb-4 border-b pb-2">{title}</h3>
 
             <slot />
         </div>
