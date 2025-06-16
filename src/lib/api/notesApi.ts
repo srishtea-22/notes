@@ -12,7 +12,7 @@ async function handleResponse<T>(response: Response): Promise<T> {
 
 export const fetchNotes = async (): Promise<Note[]> => {
     try {
-        const response = await fetch(API_BASE_URL);
+        const response = await fetch(`${API_BASE_URL}/notes`);
         return await handleResponse<Note[]>(response);
     }
     catch (error){
@@ -23,7 +23,7 @@ export const fetchNotes = async (): Promise<Note[]> => {
 
 export const createNote = async (noteData: NewNote): Promise<Note> => {
     try {
-        const response = await fetch(API_BASE_URL, {
+        const response = await fetch(`${API_BASE_URL}/notes`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ export const createNote = async (noteData: NewNote): Promise<Note> => {
 
 export const updateNote = async (id: string, noteData: Partial<NewNote>): Promise<Note> => {
     try {
-        const response = await fetch(`${API_BASE_URL}/${id}`, {
+        const response = await fetch(`${API_BASE_URL}/notes/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ export const updateNote = async (id: string, noteData: Partial<NewNote>): Promis
 
 export const deleteNote = async (id: string): Promise<boolean> => {
     try {
-        const response = await fetch(`${API_BASE_URL}/${id}`, {
+        const response = await fetch(`${API_BASE_URL}/notes/${id}`, {
             method: 'DELETE',
         });
         if (!response.ok) {

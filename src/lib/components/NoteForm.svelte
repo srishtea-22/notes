@@ -6,7 +6,7 @@
     export let note: Note | null = null;
     export let isEditing: boolean = !!note;
 
-     const colorOptions = ['#fec971', '#fe9b72', '#b693fd', '#e3ef8f', '#bfdbfe'];
+     const colorOptions = ['#fec971', '#fe9b72', '#b693fd', '#9ae59f', '#bfdbfe'];
 
     let color: string = note?.color || colorOptions[0];
     let title: string = note ? note.title: '';
