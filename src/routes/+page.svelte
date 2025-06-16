@@ -86,7 +86,6 @@
     <div class="flex items-center p-4 backdrop-blur sticky top-0 bg-white/30 z-20"> <div class="flex flex-col md:flex-row justify-between w-full gap-4 md:gap-10 items-center">
         <div class="flex flex-col md:flex-row items-center gap-2 md:gap-6 mt-4 ml-4 md:ml-8 w-full">
           <div class="flex items-center gap-2">
-            <img src="/logo.png" alt="Logo" class="w-8 h-6 md:w-10 md:h-8" />
             <h1 class="text-3xl md:text-4xl font-unbounded font-extrabold text-black">Notes</h1>
 
             <div class="relative group md:hidden ml-4">

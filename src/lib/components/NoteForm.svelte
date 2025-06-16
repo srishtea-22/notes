@@ -88,13 +88,13 @@
         <button
             type="button"
             on:click={handleCancel}
-            class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-150 ease-in-out cursor-pointer"
+            class="bg-gray-400 hover:bg-gray-500 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-150 ease-in-out cursor-pointer"
         >
             Cancel
         </button>
         <button
             type="submit"
-            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-150 ease-in-out cursor-pointer"
+            class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-150 ease-in-out cursor-pointer"
         >
             {isEditing ? 'Save Changes' : 'Add Note'}
         </button>
