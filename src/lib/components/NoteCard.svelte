@@ -3,6 +3,7 @@
     import type { Note } from '$lib/types';
 
     export let note: Note;
+    export let searchQuery = '';
     const dispatch = createEventDispatcher<{ deleteNote: string; editNote: Note }>(); 
 
     function formatDate(dateString: string): string {
@@ -20,12 +21,18 @@
     function handleEditClick() {
         dispatch('editNote', note);
     }
+
+    function highlightMatch(text: string, query: string): string {
+      if (!query.trim()) return text;
+      const regex = new RegExp(`(${query})`, 'gi');
+      return text.replace(regex, '<mark>$1</mark>');
+    }
 </script>
 
 <div class="bg-white rounded-3xl shadow-md p-6 flex flex-col justify-between h-fit max-w-full overflow-x-auto" style="background-color: {note.color}">
     <div>
-        <h3 class="text-xl font-black mb-2 font-poppins">{note.title}</h3>
-        <p class="mb-4 break-words font-poppins">{note.content}</p>
+        <h3 class="text-xl font-black mb-2 font-poppins">{@html highlightMatch(note.title, searchQuery)}</h3>
+        <p class="mb-4 break-words font-poppins">{@html highlightMatch(note.content, searchQuery)}</p>
     </div>
     <div class="flex justify-between items-center text-sm mt-auto pt-4 font-poppins">
         <span>{formatDate(note.createdAt)}</span>

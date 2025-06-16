@@ -6,6 +6,7 @@
     import ConfirmationModal from '$lib/components/ConfirmationModal.svelte';
     import FormModalWrapper from '$lib/components/FormModalWrapper.svelte';
     import type { Note } from '$lib/types';
+    import {writable, derived} from 'svelte/store';
 
     let showAddModal: boolean = false;
     let showEditModal: boolean = false;
@@ -14,6 +15,16 @@
     let showConfirmationModal: boolean = false;
     let noteToDeleteId: string | null = null;
     let noteToDeleteTitle: string = '';
+
+    let searchQuery = writable('');
+    const filteredNotes = derived(
+      [notes, searchQuery],
+      ([$notes, $searchQuery]) =>
+        $notes.filter(note =>
+          note.title.toLowerCase().includes($searchQuery.toLowerCase()) ||
+          note.content.toLowerCase().includes($searchQuery.toLowerCase())
+        )
+    );
 
     onMount(() => {
         loadNotes();
@@ -89,7 +100,20 @@
 
   <div class="flex-1 flex flex-col overflow-y-auto">
     <div class="flex items-center p-4 backdrop-blur sticky top-0 bg-white/30 z-10">
+    <div class="flex items-center w-full gap-10">
       <h1 class="text-4xl font-unbounded font-extrabold text-black mt-4 ml-4">Notes</h1>
+      <div class="relative flex items-center mt-4 font-poppins w-[50em]">
+        <input
+          type="text"
+          bind:value={$searchQuery}
+          placeholder="Search"
+          class="pl-10 pr-3 py-2 border-2 border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400 w-80"
+        />
+        <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+      </div>
+    </div>
     </div>
     <div class="container px-20 py-6 w-full">
       {#if $loading}
@@ -109,9 +133,9 @@
       </p>
       {:else}
     <div class="columns-1 md:columns-3 gap-6 space-y-6">
-      {#each $notes as note (note.id)}
+      {#each $filteredNotes as note (note.id)}
         <div class="break-inside-avoid">
-          <NoteCard {note} on:deleteNote="{confirmDelete}" on:editNote="{openEditModal}" />
+          <NoteCard {note} searchQuery={$searchQuery} on:deleteNote="{confirmDelete}" on:editNote="{openEditModal}" />
         </div>
       {/each}
     </div>
