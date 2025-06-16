@@ -33,7 +33,7 @@
         role="button"
         tabindex="0"
         aria-label="Close modal background"
-        on:keydown={(e) => (e.key === 'Enter' || e.key === ' ') && dispatch('close')}
+        on:keydown={(e) => (e.key === 'Escape') && dispatch('close')}
     >
         <div
             class="bg-white rounded-lg shadow-xl p-6 max-w-lg w-full transform transition-all scale-100 opacity-100 relative"
