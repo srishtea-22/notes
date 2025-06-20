@@ -14,6 +14,8 @@ A simple and minimal note-taking web app with color-coded notes, search function
 - Search notes by title/content
 - Responsive design for mobile and desktop
 
+![App Screenshot](static/app.png)
+
 ## How to run 
 
 ```bash
@@ -29,9 +31,10 @@ VITE_API_BASE_URL=https://684dd33965ed087139173400.mockapi.io/api
 ```
 
 Replace with your own MockAPI URL if needed
-Create the resourse as follows - 
 
-![App Screenshot](static/screenshot.png)
+Create the resource as follows - 
+
+![Resource Screenshot](static/screenshot.png)
 
 Then run:
 ```bash
